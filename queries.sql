@@ -30,4 +30,35 @@ SELECT * FROM animals;
 BEGIN;
 DELETE FROM animals;
 ROLLBACK;
+SELECT * FROM animals;
 
+BEGIN;
+DELETE FROM animals
+WHERE date_of_birth > 'JANUARY 1, 2022';
+SAVEPOINT remove_younger;
+UPDATE animals
+SET weight_kg = weight_kg * (-1);
+UPDATE animals
+SET weight_kg = weight_kg * (-1)
+WHERE weight_kg < 0;
+COMMIT;
+
+
+SELECT COUNT(*) FROM animals;
+
+SELECT COUNT(*) FROM animals 
+WHERE escape_attempts = 0;
+
+SELECT AVG(weight_kg) FROM animals;
+
+SELECT neutered,AVG(escape_attempts) FROM animals
+GROUP BY neutered;
+
+SELECT species,MIN(weight_kg) FROM animals
+GROUP BY species;
+SELECT species,MAX(weight_kg) FROM animals
+GROUP BY species;
+
+SELECT species,AVG(escape_attempts) FROM animals
+WHERE date_of_birth BETWEEN 'JANUARY 1, 1990' AND 'DECEMBER 31, 2000'
+GROUP BY species;
