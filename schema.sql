@@ -28,3 +28,23 @@ CREATE TABLE species (
     name VARCHAR(300),
     PRIMARY KEY(id)
 );
+
+ALTER TABLE animals
+ADD PRIMARY KEY(id);
+
+ALTER TABLE animals
+DROP COLUMN IF EXISTS species;
+
+ALTER TABLE animals
+ADD COLUMN species_id INT;
+
+ALTER TABLE animals
+ADD CONSTRAINT species_fkey FOREIGN KEY (species_id)
+REFERENCES species(id) ON DELETE CASCADE;
+
+ALTER TABLE animals
+ADD COLUMN owner_id INT;
+
+ALTER TABLE animals
+ADD CONSTRAINT owner_fkey FOREIGN KEY (owner_id)
+REFERENCES owners(id) ON DELETE CASCADE;

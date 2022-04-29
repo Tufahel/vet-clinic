@@ -10,6 +10,9 @@ SELECT * FROM animals WHERE neutered = TRUE;
 SELECT * FROM animals WHERE name <> 'Gabumon';
 SELECT * FROM animals WHERE weight_kg BETWEEN 10.4 AND 17.3;
 
+
+/* update table */
+
 BEGIN;
 UPDATE animals
 SET species = 'unspecified';
@@ -62,3 +65,6 @@ GROUP BY species;
 SELECT species,AVG(escape_attempts) FROM animals
 WHERE date_of_birth BETWEEN 'JANUARY 1, 1990' AND 'DECEMBER 31, 2000'
 GROUP BY species;
+
+/* query multiple table */
+
