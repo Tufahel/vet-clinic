@@ -4,6 +4,8 @@ CREATE TABLE animals (
     name varchar(100)
 );
 
+/* 1st task */ 
+
 CREATE TABLE animals (
     id INT GENERATED ALWAYS AS IDENTITY,
     name VARCHAR(300),
@@ -13,8 +15,12 @@ CREATE TABLE animals (
     weight_kg DECIMAL 
 );
 
+/* 2nd task */ 
+
 ALTER TABLE animals
 ADD COLUMN species VARCHAR(400);
+
+/* 3rd task */ 
 
 CREATE TABLE owners (
     id INT GENERATED ALWAYS AS IDENTITY,

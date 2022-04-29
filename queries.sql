@@ -1,5 +1,7 @@
 /*Queries that provide answers to the questions from all projects.*/
 
+/* 1st task */ 
+
 SELECT * from animals WHERE name = 'Luna';
 SELECT * FROM animals WHERE name LIKE '%mon';
 SELECT * FROM animals WHERE date_of_birth BETWEEN 'JANUARY 1, 2016' AND 'DECEMBER 31, 2019';
@@ -11,7 +13,7 @@ SELECT * FROM animals WHERE name <> 'Gabumon';
 SELECT * FROM animals WHERE weight_kg BETWEEN 10.4 AND 17.3;
 
 
-/* update table */
+/* 2nd task */ 
 
 BEGIN;
 UPDATE animals
@@ -66,5 +68,42 @@ SELECT species,AVG(escape_attempts) FROM animals
 WHERE date_of_birth BETWEEN 'JANUARY 1, 1990' AND 'DECEMBER 31, 2000'
 GROUP BY species;
 
-/* query multiple table */
+/* 3rd task */ 
 
+SELECT * FROM animals
+JOIN owners ON owner_id = owners.id
+WHERE full_name = 'Melody Pond';
+
+SELECT * FROM animals
+JOIN species ON species_id = species.id
+WHERE species.name = 'Pokemon';
+
+SELECT * FROM owners
+FULL OUTER JOIN animals
+ON owners.id = animals.id;
+
+SELECT species.name, COUNT(*)
+FROM species
+LEFT JOIN animals
+ON species.id = animals.species_id
+GROUP BY species.name;
+
+SELECT * FROM animals
+INNER JOIN owners
+ON animals.owner_id = owners.id
+WHERE owners.full_name = 'Jennifer Orwell' 
+AND animals.species_id = (SELECT id from species WHERE name = 'Digimon');
+
+SELECT * FROM animals
+INNER JOIN owners
+ON animals.owner_id = owners.id
+WHERE owners.full_name = 'Dean Winchester' 
+AND animals.escape_attempts = 0;
+
+SELECT owners.full_name, COUNT(*)
+FROM owners
+LEFT JOIN animals
+ON owners.id =  animals.owner_id
+GROUP BY owners.full_name
+ORDER BY COUNT DESC
+LIMIT 1;
