@@ -2,6 +2,9 @@
 
 > A Relational Database System for a vet clinic.
 
+## Database Schema
+![](drawSQL-export-2022-05-05_23_48.png)
+
 ## Getting Started
 
 This repository includes files with plain SQL that can be used to recreate a database:
