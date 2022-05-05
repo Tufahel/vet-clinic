@@ -1,9 +1,5 @@
 /* Database schema to keep the structure of entire database. */
 
-CREATE TABLE animals (
-    name varchar(100)
-);
-
 /* 1st task */ 
 
 CREATE TABLE animals (
@@ -79,3 +75,11 @@ CREATE TABLE visits(
     FOREIGN KEY (animal_id) REFERENCES animals(id),
     FOREIGN KEY (animal_id) REFERENCES animals(id)
 );
+
+/* performance audit */
+
+ALTER TABLE owners ADD COLUMN email VARCHAR(120);
+
+CREATE INDEX ON owners(email);
+CREATE INDEX ON visits(vet_id);
+CREATE INDEX ON visits(animal_id);
